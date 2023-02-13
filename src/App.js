@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import UserInput from './components/UserInput';
-import UserList from './components/UserList';
+import UserInput from './components/Users/UserInput';
+import UserList from './components/Users/UserList';
 
 function App() {
   const [users, setUsers] = useState([{name: "Max", age: 31, id: 1}]);
