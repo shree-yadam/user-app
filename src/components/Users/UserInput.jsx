@@ -6,7 +6,7 @@ import classes from "./UserInput.module.css";
 
 function UserInput(props) {
   const [user, setUser] = useState({ name: "", age: "" });
-
+  const [error, setError] = useState();
   /**
    * Form submission event handler
    * @param {*} event
@@ -14,10 +14,18 @@ function UserInput(props) {
   function submitHandler(event) {
     event.preventDefault();
     if (user.name.trim().length === 0 || user.age.trim().length === 0) {
+      setError({
+        title: 'Invalid input',
+        message: 'Please enter a valid name and age (non-empty values).'
+      });
       return;
     }
 
     if (+user.age < 1) {
+      setError({
+        title: 'Invalid input',
+        message: 'Please enter a valid age (> 0).'
+      });
       return;
     }
     props.addUser({ name: user.name, age: Number(user.age) });
@@ -46,9 +54,17 @@ function UserInput(props) {
     });
   }
 
+  /**
+   * Reset error on okay being clicked
+   * @param {*} event 
+   */
+  function errorDismissHandler(event) {
+    setError(null);
+  }
+
   return (
     <div>
-      <ErrorModal title="An error occured!" message="Something went wrong!"/>
+      {error && <ErrorModal title={error.title} message={error.message} onClick={errorDismissHandler}/>}
       <Card className={classes.input}>
         <form onSubmit={submitHandler}>
           <label htmlFor="username">Username</label>
