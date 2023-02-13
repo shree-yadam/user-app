@@ -10,7 +10,8 @@ function UserInput(props) {
    */
   function submitHandler(event) {
     event.preventDefault();
-    console.log("Submitted ", user);
+    props.addUser(user);
+    setUser({ name: "", age: "" });
   }
 
   /**
@@ -30,7 +31,7 @@ function UserInput(props) {
    */
   function ageChangeHandler(event) {
     setUser((prev) => {
-      const newUser = { ...prev, age: event.target.value };
+      const newUser = { ...prev, age: Number(event.target.value) };
       return newUser;
     });
   }

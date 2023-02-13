@@ -3,7 +3,7 @@ import './UserListItem.css';
 function UserListItem(props) {
 
   function formatAge() {
-    return `${props.user.age} year${props.user.age != 1?'s':''} old`;
+    return `${props.user.age} year${props.user.age !== 1?'s':''} old`;
   }
 
   return (
