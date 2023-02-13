@@ -1,12 +1,15 @@
-import './UserList.css';
+import "./UserList.css";
 import UserListItem from "./UserListItem";
+import Card from "../UI/Card";
 
 function UserList(props) {
   return (
-    <div className="user-list">
-      {props.users.map(user => <UserListItem user={user} key={user.id}/>)}
-    </div>
-  )
+    <Card className="users">
+      {props.users.map((user) => (
+        <UserListItem user={user} key={user.id} />
+      ))}
+    </Card>
+  );
 }
 
 export default UserList;
