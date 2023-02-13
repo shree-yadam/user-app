@@ -12,7 +12,14 @@ function UserInput(props) {
    */
   function submitHandler(event) {
     event.preventDefault();
-    props.addUser(user);
+    if(user.name.trim().length === 0 || user.age.trim().length === 0) {
+      return;
+    }
+    
+    if(+user.age < 1) {
+      return;
+    }
+    props.addUser({name: user.name, age: Number(user.age)});
     setUser({ name: "", age: "" });
   }
 
@@ -33,7 +40,7 @@ function UserInput(props) {
    */
   function ageChangeHandler(event) {
     setUser((prev) => {
-      const newUser = { ...prev, age: Number(event.target.value) };
+      const newUser = { ...prev, age: event.target.value };
       return newUser;
     });
   }
@@ -44,7 +51,7 @@ function UserInput(props) {
         <label htmlFor="username">Username</label>
         <input id="username" value={user.name} onChange={nameChangeHandler} />
         <label htmlFor="age">Age (Years)</label>
-        <input id="age" value={user.age} onChange={ageChangeHandler} />
+        <input id="age" value={user.age} type='number' onChange={ageChangeHandler} />
         <Button type="submit">Add User</Button>
       </form>
     </Card>
