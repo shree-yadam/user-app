@@ -1,0 +1,23 @@
+.user-input {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-top: 20px;
+  padding: 10px 20px 20px 20px;
+  width: 60%;
+  height: 150px;
+  border: 0.5px solid black;
+  justify-content: space-evenly;
+  border-radius: 10px;
+}
+
+button {
+  background-color:darkmagenta;
+  color: white;
+  width: fit-content;
+}
+
+label {
+  font-weight: bold;
+  width: fit-content;
+}
