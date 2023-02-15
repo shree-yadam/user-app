@@ -64,7 +64,7 @@ function UserInput(props) {
   }
 
   return (
-    <Wrapper>
+    <>
       {error && <ErrorModal title={error.title} message={error.message} onClick={errorDismissHandler}/>}
       <Card className={classes.input}>
         <form onSubmit={submitHandler}>
@@ -80,7 +80,7 @@ function UserInput(props) {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </Wrapper>
+    </>
   );
 }
 
