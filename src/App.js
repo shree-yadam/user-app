@@ -16,10 +16,10 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <>
       <UserInput addUser={handleAddUser}/>
       <UserList users={users}/>
-    </div>
+    </>
   );
 }
 
